@@ -1,7 +1,6 @@
 package org.example;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +25,7 @@ public class ServicoVenda {
         boolean nenhumaVenda = false;
         for (Venda referencia : vendas) {
             System.out.println("\n" + referencia);
+            nenhumaVenda = true;
         } if (!nenhumaVenda){
             System.out.println("Nenhuma venda cadastrada!");
         }
@@ -38,7 +38,7 @@ public class ServicoVenda {
             valorValido = true;
         }
         if(!valorValido){
-            throw new Exception("Valor não encontrado");
+            throw new Exception("Valor inválido");
         }
     }
 
