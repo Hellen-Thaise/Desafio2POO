@@ -1,17 +1,14 @@
 package org.example;
 
-import java.util.Date;
-
-
     public class Cliente {
         private String nome;
-        private int telefone;
-        private int numeroCliente;
+        private String cpf;
+        private String email;
 
-        public Cliente(String nome, int telefone, int numeroCliente) {
+        public Cliente(String nome, String cpf, String email) {
             this.nome = nome;
-            this.telefone = telefone;
-            this.numeroCliente = numeroCliente;
+            this.cpf = cpf;
+            this.email = email;
         }
 
         public Cliente() {
@@ -22,29 +19,20 @@ import java.util.Date;
             return nome;
         }
 
-        public void setNome(String nome) {
-            this.nome = nome;
+
+        public String getCpf() {
+            return cpf;
         }
 
-        public int getTelefone() {
-            return telefone;
+
+        public String getEmail() {
+            return email;
         }
 
-        public void setTelefone(int telefone) {
-            this.telefone = telefone;
-        }
-
-        public int getNumeroCliente() {
-            return numeroCliente;
-        }
-
-        public void setNumeroCliente(int numeroCliente) {
-            this.numeroCliente = numeroCliente;
-        }
 
         @Override
         public String toString() {
-            return "Nome do Cliente: " + nome + "\nNúmero de telefone: " + telefone + "\nNúmero do cliente: " + numeroCliente;
+            return "Nome do Cliente: " + nome + "\nNúmero do CPF: " + cpf + "\nE-mail do cliente: " + email;
         }
     }
 

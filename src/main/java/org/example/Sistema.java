@@ -1,10 +1,6 @@
 package org.example;
 
-import com.sun.security.jgss.GSSUtil;
-
 import java.util.Scanner;
-
-import static org.example.ServicoVenda.*;
 
 public class Sistema {
     private static Scanner entradaDados(String mensagem) {
@@ -16,14 +12,15 @@ public class Sistema {
     //método para receber a entrada de dados no cadastro de clientes:
     public static Cliente adicionarCliente() {
         try {
-              String nome = entradaDados("Por favor digite o nome do Cliente: ").nextLine();
-//            ServicoCliente.validaSeExisteCliente(nome);
-            int telefone = entradaDados("Por favor, digite o número do telefone").nextInt();
-            int numeroCliente = entradaDados("Por favor, digite o número de cadastro do Cliente: ").nextInt();
-
-            return ServicoCliente.adicionarCliente(nome, telefone, numeroCliente);
+            String nome = entradaDados("Por favor, digite o nome do Cliente: ").nextLine();
+            String cpf = entradaDados("Por favor, digite o número do CPF: ").nextLine();
+            String email = entradaDados("Por favor, digite o E-mail do Cliente: ").nextLine();
+            ServiceCliente.validaEmailCliente(email);
+            ServiceCliente.VerificarSeEmailRepetido(email);
+            ServiceCliente.VerificarSeCpfRepetido(cpf);
+            return ServiceCliente.adicionarCliente(nome, cpf, email);
         }catch (Exception e){
-            System.out.println("Erro identificado " + e.getMessage());
+            System.out.println("Erro identificado: " + e.getMessage());
             return null;
         }
 
@@ -31,26 +28,29 @@ public class Sistema {
 
     //método para receber a entrada de dados no cadastro de vendedores:
     public static Vendedor adicionarVendedor() {
-        String nome = entradaDados("Por favor digite o nome do Vendedor: ").nextLine();
-        int telefone = entradaDados("Por favor, digite o número do telefone").nextInt();
-        int numeroVendedor = entradaDados("Por favor, digite o número de cadastro do Vendedor: ").nextInt();
-        return ServicoVendedor.adicionarVendedor(nome, telefone, numeroVendedor);
+        String nome = entradaDados("Por favor, digite o nome do Vendedor: ").nextLine();
+        String cpf = entradaDados("Por favor, digite o número do CPF: ").nextLine();
+        String email = entradaDados("Por favor, digite o E-mail do Vendedor: ").nextLine();
+        ServiceVendedor.VerificarSeCpfRepetidoVendedor(cpf);
+        ServiceVendedor.validaEmailVendedor(email);
+        ServiceVendedor.VerificarSeEmailRepetidoVendedor(email);
+        return ServiceVendedor.adicionarVendedor(nome, cpf, email);
     }
 
     public static Venda adicionarVenda() {
         try {
             String nomeCliente = entradaDados("Por favor, digite o nome do Cliente: ").nextLine();
-            ServicoCliente.validaSeExisteCliente(nomeCliente);
+            ServiceCliente.validaSeExisteCliente(nomeCliente);
 
             String nomeVendedor = entradaDados("Por favor, digite o nome do Vendedor: ").nextLine();
-            ServicoVendedor.validaSeExisteVendedor(nomeVendedor);
+            ServiceVendedor.validaSeExisteVendedor(nomeVendedor);
 
             Double valor = entradaDados("Por favor, digite o valor do produto").nextDouble();
-            ServicoVenda.validaValorVenda(valor);
+            ServiceVenda.validaValorVenda(valor);
 
-            return ServicoVenda.adicionarVenda(nomeCliente, nomeVendedor, valor);
+            return ServiceVenda.adicionarVenda(nomeCliente, nomeVendedor, valor);
         }catch (Exception e) {
-            System.out.println("Erro identificado " + e.getMessage());
+            System.out.println("Erro identificado: " + e.getMessage());
             return null;
         }
     }
@@ -75,7 +75,7 @@ public class Sistema {
         boolean operarMenu = true;
         while (operarMenu) {
             menu();
-            int escolhaUsuario = entradaDados(" ***** Selecione uma opção que deseja realizar: *****").nextInt();
+            int escolhaUsuario = entradaDados("\n ----- Selecione uma opção que deseja realizar: -----").nextInt();
             if (escolhaUsuario == 1) {
                 Cliente cliente = new Cliente();
                 cliente = adicionarCliente();
@@ -83,7 +83,7 @@ public class Sistema {
                 System.out.println("------------------------");
                 System.out.println("Clientes cadastrados:   ");
                 System.out.println("------------------------");
-                ServicoCliente.listarClientes();
+                ServiceCliente.listarClientes();
             }
             if (escolhaUsuario == 3) {
                 Vendedor vendedor = new Vendedor();
@@ -92,7 +92,7 @@ public class Sistema {
                     System.out.println("------------------------");
                     System.out.println("Vendedores cadastrados: ");
                     System.out.println("------------------------");
-                    ServicoVendedor.listarVendedores();
+                    ServiceVendedor.listarVendedores();
 
             }if (escolhaUsuario == 5) {
 
@@ -101,12 +101,12 @@ public class Sistema {
                 System.out.println("------------------------");
                 System.out.println("Vendas cadastradas: ");
                 System.out.println("------------------------");
-                ServicoVenda.listarVenda();
+                ServiceVenda.listarVenda();
 
             }
 
             else if (escolhaUsuario == 7) {
-                System.out.println("Obrigado(a), até logo!");
+                System.out.println("Obrigado(a) por utilizar nosso sistema, até logo!");
                 operarMenu = false;
             }
 

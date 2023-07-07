@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServicoVenda {
+public class ServiceVenda {
 
     private static List<Venda> vendas = new ArrayList<>();
 
-    public ServicoVenda(List<Venda> vendas) {
+    public ServiceVenda(List<Venda> vendas) {
         this.vendas = vendas;
     }
 

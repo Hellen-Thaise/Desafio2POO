@@ -3,11 +3,11 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServicoVendedor {
+public class ServiceVendedor {
 
     private static List<Vendedor> vendedores = new ArrayList<>();
 
-    public ServicoVendedor(List<Vendedor> vendedores) {
+    public ServiceVendedor(List<Vendedor> vendedores) {
         this.vendedores = vendedores;
 
     }

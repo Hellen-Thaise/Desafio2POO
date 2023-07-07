@@ -2,13 +2,12 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 
-public class ServicoCliente {
+public class ServiceCliente {
     private static List<Cliente> clientes = new ArrayList<>();
 
-    public ServicoCliente(List<Cliente> clientes) {
+    public ServiceCliente(List<Cliente> clientes) {
         this.clientes = clientes;
 
     }

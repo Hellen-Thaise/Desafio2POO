@@ -2,13 +2,13 @@ package org.example;
 
 public class Vendedor {
     private String nome;
-    private int telefone;
-    private int numeroVendedor;
+    private String cpf;
+    private String email;
 
-    public Vendedor(String nome, int telefone, int numeroVendedor) {
+    public Vendedor(String nome, String cpf, String email) {
         this.nome = nome;
-        this.telefone = telefone;
-        this.numeroVendedor = numeroVendedor;
+        this.cpf = cpf;
+        this.email = email;
     }
 
     public Vendedor() {
@@ -23,24 +23,24 @@ public class Vendedor {
         this.nome = nome;
     }
 
-    public int getTelefone() {
-        return telefone;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setTelefone(int telefone) {
-        this.telefone = telefone;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public int getNumeroVendedor() {
-        return numeroVendedor;
+    public String getEmail() {
+        return email;
     }
 
-    public void setNumeroVendedor(int numeroVendedor) {
-        this.numeroVendedor = numeroVendedor;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
     public String toString() {
-        return "Nome do Vendedor: " + nome + "\nNúmero de telefone: " + telefone + "\nNúmero do vendedor: " + numeroVendedor;
+        return "Nome do Vendedor: " + nome + "\nNúmero do CPF: " + cpf + "\nE-mail do Vendedor: " + email;
     }
 }

@@ -16,49 +16,15 @@ public class Venda {
         this.dataRegistro = dataRegistro;
     }
 
-    public Venda() {
-
-    }
-
-    public String getNomeCliente() {
-        return nomeCliente;
-    }
-
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
-    }
-
-    public String getNomeVendedor() {
-        return nomeVendedor;
-    }
-
-    public void setNomeVendedor(String nomeVendedor) {
-        this.nomeVendedor = nomeVendedor;
-    }
-
-    public Double getValorPago() {
-        return valorPago;
-    }
-
-    public void setValorPago(double valorPago) {
-        this.valorPago = valorPago;
-    }
-
-    public LocalDate getDataRegistro() {
-        return dataRegistro;
-    }
-
-    public void setDataRegistro(LocalDate dataRegistro) {
-        this.dataRegistro = dataRegistro;
-    }
 
     @Override
     public String toString() {
-        return "Venda{" +
-                "nomeCliente='" + nomeCliente + '\'' +
-                ", nomeVendedor='" + nomeVendedor + '\'' +
-                ", valorPago=" + valorPago +
-                ", dataRegistro=" + dataRegistro +
-                '}';
+        return "Venda:" +
+                "\nNome do Cliente: " + nomeCliente +
+                "\nNome do Vendedor: " + nomeVendedor +
+                "\nValor Pago: " + valorPago +
+                "\nData do Registro: " + dataRegistro;
     }
+
+
 }
